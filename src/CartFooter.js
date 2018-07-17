@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-const Copyright = (props) => (
-  <span> &copy; {props.year} </span>
+const Copyright = ({year}) => (
+  <span> &copy; {year} </span>
 );
 
 class CartFooter extends Component {
