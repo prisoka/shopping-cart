@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CartHeader from './CartHeader';
-import CartItems from './CartItems';
-import CartFooter from './CartFooter';
+import CartHeader from './Components/CartHeader';
+import CartItems from './Components/CartItems';
+import CartFooter from './Components/CartFooter';
 
 class App extends Component {
   render() {
