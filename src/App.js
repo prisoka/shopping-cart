@@ -1,6 +1,38 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-// import './App.css';
+import logo from './logo.svg';
+import './App.css';
+
+const Copyright = (props) => (
+  <span> &copy; {props.year} </span>
+);
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          <nav className="navbar navbar-dark bg-primary">
+            <a className="navbar-brand" href="#">Shopping Cart</a>
+          </nav>
+        </header>
+
+        <div className="container">
+          <h1>Cart Items</h1>
+        </div>
+
+        <footer>
+          <nav className="navbar navbar-dark bg-dark">
+            <a className="navbar-brand" href="#">
+                <Copyright year="2016"/>
+            </a>
+          </nav>
+        </footer>
+      </div>
+    );
+  }
+}
+
+export default App;
 
 // class App extends Component {
 //   render() {
@@ -19,17 +51,3 @@ import React, { Component } from 'react';
 // }
 //
 // export default App;
-
-// class CartHeader extends Component {
-//   render() {
-//     return (
-//       <div id='header'>
-//         <nav className="navbar navbar-dark bg-primary">
-//           <a className="navbar-brand" href="#">Shopping Cart</a>
-//         </nav>
-//       </div>
-//     );
-//   }
-// }
-//
-// export default CartHeader;
