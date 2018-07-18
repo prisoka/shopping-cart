@@ -1,6 +1,30 @@
 import React, { Component } from 'react';
 
 class AddItem extends Component {
+
+  onSubmit = (e) => {
+    e.preventDefault()
+    console.log(this.state)
+
+    const {selectedId, quantity} = this.state;
+    const {products, onItemAdded} = this.props;
+    const product = products.find(product => {
+      return product.id === selectedId;
+    })
+
+    console.log(product)
+
+    const cartItem = {
+      product: product,
+      quantity: parseInt(quantity)
+    }
+    console.log(cartItem)
+
+    onItemAdded(cartItem)
+  }
+
+  onChange = (e) => this.setState({[e.target.name]: parseInt(e.target.value)})
+
   render() {
     // console.log(this.props); // this the the obj itself w/ key=products and values=[objs]
     // console.log(this.props.products); // this is an array of objects
@@ -8,16 +32,16 @@ class AddItem extends Component {
 
     return (
       <div>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <label>
             Quantity
           </label>
-            <input type='text' />
+            <input type='text' name='quantity' onChange={this.onChange} />
           <label>
             Products
           </label>
-          <select>
-            <option value="">Select an option</option>
+          <select name='selectedId' onChange={this.onChange} >
+            <option value="" >Select an option</option>
             {products.map((product) => {
               return <option key={product.id} value={product.id}>{product.name}</option>
             })}
