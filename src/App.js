@@ -24,25 +24,28 @@ class App extends Component {
       { id: 1, product: { id: 40, name: 'Mediocre Iron Watch', priceInCents: 399 }, quantity: 1 },
       { id: 2, product: { id: 41, name: 'Heavy Duty Concrete Plate', priceInCents: 499 }, quantity: 2 },
       { id: 3, product: { id: 42, name: 'Intelligent Paper Knife', priceInCents: 1999 }, quantity: 1 },
-    ]
+    ],
+    cartTotal: 399 + (499*2) + 1999
   }
 
   addedItem = (cartItem) => {
+    this.setState({cartTotal: this.state.cartTotal + (cartItem.product.priceInCents * cartItem.quantity)}),
     this.setState(prevState => {
       return {
         products: prevState.products,
-        cartItemsList: prevState.cartItemsList.concat(cartItem)
+        cartItemsList: prevState.cartItemsList.concat(cartItem),
       }
     })
   }
 
   render() {
-    const {cartItemsList, products} = this.state;
+    const {cartItemsList, products, cartTotal} = this.state;
 
     return (
       <div className="App">
         <CartHeader />
         <CartItems cartItemsList={cartItemsList} />
+        <p className="col-md-8" id='cartTotal'>Total: {this.state.cartTotal}</p>
         <AddItem products={products} onItemAdded={ (item) => this.addedItem(item)}/>
         <CartFooter />
         {/* <CartFooter copyright="whenever you're creating this app :)" /> */}
