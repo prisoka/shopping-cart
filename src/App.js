@@ -45,7 +45,7 @@ class App extends Component {
       <div className="App">
         <CartHeader />
         <CartItems cartItemsList={cartItemsList} />
-        <p className="container" id='cartTotal'>Total: {this.state.cartTotal}</p>
+        <p className="container" id='cartTotal'>Total: ${this.state.cartTotal/100}</p>
         <AddItem products={products} onItemAdded={ (item) => this.addedItem(item)}/>
         <CartFooter />
         {/* <CartFooter copyright="whenever you're creating this app :)" /> */}
