@@ -45,29 +45,31 @@ class AddItem extends Component {
 
     return (
       <div >
-        <form onSubmit={this.onSubmit}>
-          <div className="list-group-item">
-            <label>
-              Quantity
-            </label>
-            <input type='number' name='quantity' onChange={this.onChange} />
-          </div>
-          <div className="list-group-item">
-            <label>
-              Products
-            </label>
-            <select name='selectedId' onChange={this.onChange} >
-              <option value="" >Select an option</option>
-              {products.map((product) => {
-                return <option key={product.id} value={product.id}>{product.name}</option>
-              })}
-            </select>
-          </div>
-          <div className="list-group-item">
-            <input type='submit' value='Submit' />
-          </div>
-        </form>
-       </div>
+        <div className="container">
+          <form onSubmit={this.onSubmit}>
+            <div>
+              <label>
+                Quantity
+              </label><br/>
+              <input type='number' name='quantity' onChange={this.onChange} />
+            </div>
+            <div >
+              <label>
+                Products
+              </label><br/>
+              <select name='selectedId' onChange={this.onChange} >
+                <option value="" >Select an option</option>
+                {products.map((product) => {
+                  return <option key={product.id} value={product.id}>{product.name}</option>
+                })}
+              </select>
+            </div><br/>
+            <div>
+              <input type='submit' value='Submit' />
+            </div>
+          </form>
+        </div>
+      </div>
     );
   }
 }
