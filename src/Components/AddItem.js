@@ -2,28 +2,41 @@ import React, { Component } from 'react';
 
 class AddItem extends Component {
 
+  // initializing the state
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedId: null,
+      quantity: 0
+    };
+  }
+
   onSubmit = (e) => {
     e.preventDefault()
-    console.log(this.state)
-
+    // console.log(this.state)
+    // console.log(this.props)
     const {selectedId, quantity} = this.state;
+
     const {products, onItemAdded} = this.props;
+
     const product = products.find(product => {
       return product.id === selectedId;
     })
 
-    console.log(product)
+    // console.log(product)
 
     const cartItem = {
       product: product,
       quantity: parseInt(quantity)
     }
-    console.log(cartItem)
+    // console.log(cartItem)
 
     onItemAdded(cartItem)
   }
 
-  onChange = (e) => this.setState({[e.target.name]: parseInt(e.target.value)})
+  onChange = (e) => this.setState({
+    [e.target.name]: parseInt(e.target.value)
+  })
 
   render() {
     // console.log(this.props); // this the the obj itself w/ key=products and values=[objs]
@@ -36,7 +49,7 @@ class AddItem extends Component {
           <label>
             Quantity
           </label>
-            <input type='text' name='quantity' onChange={this.onChange} />
+            <input type='number' name='quantity' onChange={this.onChange} />
           <label>
             Products
           </label>
